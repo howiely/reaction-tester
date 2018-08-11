@@ -1,5 +1,5 @@
 # Test Your Reactions
-*Test your reactions using this mini color game built using JavaScript*
+*Test your reactions using this mini color canvas shapes game built using JavaScript*
 
 Click the randomly generated canvas shapes *[**circles, rectangles, and squares**]* to know how fast you react!
 
