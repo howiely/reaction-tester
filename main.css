@@ -95,10 +95,6 @@ strong,
     margin: 20px;
 }
 
-#playground {
-    border: none;
-}
-
 #playground:hover {
     cursor: pointer;
 }
