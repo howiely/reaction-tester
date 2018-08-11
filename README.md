@@ -12,7 +12,7 @@ Click the randomly generated canvas shapes *[**circles, rectangles, and squares*
 
 - Try to have reaction time less than a second to start the streak.
 
--Streak becomes **0** if your reaction time is more than a second.
+- Streak becomes **0** if your reaction time is more than a second.
 
 ## Badges
 - You will earn a **Starter** badge with a streak of 10.
@@ -35,5 +35,5 @@ Click the randomly generated canvas shapes *[**circles, rectangles, and squares*
 - You are the champ!! <br/> Relax now 😂
 - Oops, you have taken more than a second to react! Focus and keep going 😞
 
-###Why wait, just play the game and test your reaction speed!! 😃😉😎😂###
+### Why wait, just play the game and test your reaction speed!! 😃😉😎😂
 [Play Game](https://iamsainikhil.github.io/reaction-tester)
