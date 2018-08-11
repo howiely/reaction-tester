@@ -3,37 +3,37 @@
 
 Click the randomly generated canvas shapes *[**circles, rectangles, and squares**]* to know how fast you react!
 
-##Rules
--**Reaction Time:** Calculated based on the time taken to click on a canvas shape as it appears by you.
+##Rules##
+- **Reaction Time:** Calculated based on the time taken to click on a canvas shape as it appears by you.
 
--**Streak:** The number of times, your reaction time is less than a second.
+- **Streak:** The number of times, your reaction time is less than a second.
 
--**Badge:** You will earn a badge for a specific achievement in the game.
+- **Badge:** You will earn a badge for a specific achievement in the game.
 
--Try to have reaction time less than a second to start the streak.
+- Try to have reaction time less than a second to start the streak.
 
 -Streak becomes **0** if your reaction time is more than a second.
 
-##Badges
--You will earn a **Starter** badge with a streak of 10.
+##Badges##
+- You will earn a **Starter** badge with a streak of 10.
 
--You will earn a **Sharp** badge with a streak of 25.
+- You will earn a **Sharp** badge with a streak of 25.
 
--You will earn a **Expert** badge with a streak of 50.
+- You will earn a **Expert** badge with a streak of 50.
 
--You will earn a **Champion** badge with a streak of 100.
+- You will earn a **Champion** badge with a streak of 100.
 
--You will earn a **Legend** badge with a streak of 250.
+- You will earn a **Legend** badge with a streak of 250.
 
--You will earn a **Flash** badge with a streak of 500.
+- You will earn a **Flash** badge with a streak of 500.
 
-##Game Status
+##Game Status##
 *You will get some inspiring status while playing like the below statements*
--Keep up the pace. Your reaction speed is good! 😃
--Your reaction speed is Awesome! 😉
--Amazing reaction speed!! 😎
--You are the champ!! <br/> Relax now 😂
--Oops, you have taken more than a second to react! Focus and keep going 😞
+- Keep up the pace. Your reaction speed is good! 😃
+- Your reaction speed is Awesome! 😉
+- Amazing reaction speed!! 😎
+- You are the champ!! <br/> Relax now 😂
+- Oops, you have taken more than a second to react! Focus and keep going 😞
 
-###Why wait, just play the game and test your reaction speed!! 😃😉😎😂
+###Why wait, just play the game and test your reaction speed!! 😃😉😎😂###
 [Play Game](https://iamsainikhil.github.io/reaction-tester)
