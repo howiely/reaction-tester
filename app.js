@@ -2,6 +2,7 @@
 var canvas = document.getElementById('playground');
 var ctx = canvas.getContext('2d');
 var startTime;
+var note = document.getElementById('note');
 var count = 0;
 
 // update badge and badges element
@@ -153,7 +154,6 @@ function randomFigure() {
     }
 
     // update note element to encourage the player and give status details of the game
-    var note = document.getElementById('note');
     if (count >= 1 && count < 10) {
         note.innerHTML = "Keep up the pace.<br/> Your reaction speed is good! 😃";
     } else if (count >= 10 && count <= 25) {
@@ -184,6 +184,7 @@ function randomFigure() {
 
 drawCircle(); // initial figure
 start(); // initial start time
+note.innerHTML = "You will get some inspiring status quotes once you start the game";
 // for every click on canvas, generate a random figure and reaction time
 canvas.onclick = randomFigure;
 canvas.touchstart = randomFigure;
