@@ -32,7 +32,7 @@ Click the randomly generated canvas shapes *[**circles, rectangles, and squares*
 - Keep up the pace. Your reaction speed is good! 😃
 - Your reaction speed is Awesome! 😉
 - Amazing reaction speed!! 😎
-- You are the champ!! <br/> Relax now 😂
+- You are the champ!! Relax now 😂
 - Oops, you have taken more than a second to react! Focus and keep going 😞
 
 ### Why wait, just play the game and test your reaction speed!! 😃😉😎😂
