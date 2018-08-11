@@ -38,7 +38,6 @@ function getTransform() {
         y /= 3.5;
     }
     var transform = `translate(${randomNumber(x)}px, ${randomNumber(y)}px)`;
-    console.log(transform);
     return transform;
 }
 
