@@ -3,7 +3,7 @@
 
 Click the randomly generated canvas shapes *[**circles, rectangles, and squares**]* to know how fast you react!
 
-##Rules##
+## Rules
 - **Reaction Time:** Calculated based on the time taken to click on a canvas shape as it appears by you.
 
 - **Streak:** The number of times, your reaction time is less than a second.
@@ -14,7 +14,7 @@ Click the randomly generated canvas shapes *[**circles, rectangles, and squares*
 
 -Streak becomes **0** if your reaction time is more than a second.
 
-##Badges##
+## Badges
 - You will earn a **Starter** badge with a streak of 10.
 
 - You will earn a **Sharp** badge with a streak of 25.
@@ -27,7 +27,7 @@ Click the randomly generated canvas shapes *[**circles, rectangles, and squares*
 
 - You will earn a **Flash** badge with a streak of 500.
 
-##Game Status##
+## Game Status
 *You will get some inspiring status while playing like the below statements*
 - Keep up the pace. Your reaction speed is good! 😃
 - Your reaction speed is Awesome! 😉
