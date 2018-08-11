@@ -1,0 +1,8 @@
+.canvas-wrapper {
+    display: flex;
+    margin: 10px auto;
+}
+
+#playground:hover {
+    cursor: pointer;
+}
