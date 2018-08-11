@@ -4,6 +4,44 @@ var ctx = canvas.getContext('2d');
 var startTime;
 var count = 0;
 
+// update badge and badges element
+var badgeElement = document.getElementById('badge');
+var badgesElement = document.getElementById('badges');
+var streak = document.getElementById('streak');
+var highestStreak = document.getElementById('high');
+var badge = '';
+var badges = [];
+var streakCounts = [];
+
+// runs when a certain count is reached based on switch logic
+function assignBadge(badgeName) {
+    badge = badgeName;
+    // check if badge already achieved
+    if (!badges.includes(badgeName)) {
+        badges.push(badge);
+    }
+    badgeElement.innerHTML = `Badge Earned: <strong>${badge}</strong>`;
+}
+
+// detect browser window size and accordingly update canvas
+function getTransform() {
+    var x = window.innerWidth;
+    var y = window.innerHeight;
+    if (x >= 300 && x <= 767) {
+        x /= 2;
+        y /= 3;
+    } else if (x >= 1920) {
+        x /= 1.25;
+        y /= 4;
+    } else {
+        x /= 1.75;
+        y /= 3.5;
+    }
+    var transform = `translate(${randomNumber(x)}px, ${randomNumber(y)}px)`;
+    console.log(transform);
+    return transform;
+}
+
 function start() {
     const date = new Date();
     startTime = date.getTime();
@@ -55,40 +93,83 @@ function randomFigure() {
     canvas.width = canvas.width;
 
     // to translate canvas to random x and y co-ordinates
-    canvas.style.transform = `translate(${randomNumber(300)}px, ${randomNumber(300)}px)`;
+    canvas.style.transform = getTransform();
 
     // calculate reaction time
     var r = dateDifference(startTime);
 
     // update reaction element
     var p = document.getElementById('reaction');
-    p.innerHTML = `Reaction Time is <strong>${r}s</strong>`;
+    p.innerHTML = `${r}s`;
 
     // count number of reaction time less than a second
     if (r < 1) {
+        highestStreak.style.display = 'none';
         count++;
     } else {
+        highestStreak.style.display = 'block';
+        streakCounts.push(count);
+        highestStreak.innerHTML = `Highest Streak: <strong>${Math.max(...streakCounts)}</strong>`;
         count = 0;
     }
 
-    // update note element to encourage the player
+    // update streak element
+    streak.innerHTML = count;
+
+    /* badges */
+
+    // badge statements
+    if (badges.length > 1) {
+        badgeElement.innerHTML = `Latest Badge Earned: <strong>${badge}</strong>`;
+        badgesElement.innerHTML = `Badges earned: <strong>${badges.join(' , ')}</strong>`;
+    }
+
+    switch (count) {
+        case 0:
+            if (badges.length === 0) {
+                // do nothing
+            } else {
+                badgeElement.innerHTML = `Last Badge Earned: <strong>${badges[badges.length - 1]}</strong>`;
+                badgesElement.innerHTML = `Badges earned: <strong>${badges.join(' , ')}</strong>`;
+            }
+            break;
+        case 10:
+            assignBadge('Starter');
+            break;
+        case 25:
+            assignBadge('Sharp');
+            break;
+        case 50:
+            assignBadge('Champion');
+            break;
+        case 100:
+            assignBadge('Expert');
+            break;
+        case 250:
+            assignBadge('Legend');
+            break;
+        case 500:
+            assignBadge('Flash');
+            break;
+    }
+
+    // update note element to encourage the player and give status details of the game
     var note = document.getElementById('note');
     if (count >= 1 && count < 10) {
-        note.innerHTML = "<strong>Keep up the pace. Your reaction speed is good! 😃</strong>";
+        note.innerHTML = "Keep up the pace.<br/> Your reaction speed is good! 😃";
     } else if (count >= 10 && count <= 25) {
-        note.innerHTML = "<strong>Your reaction speed is Awesome! 😉</strong>";
+        note.innerHTML = "Your reaction speed is Awesome! 😉";
     } else if (count > 25 && count <= 50) {
-        note.innerHTML = "<strong>Amazing reaction speed!! 😎</strong>";
+        note.innerHTML = "Amazing reaction speed!! 😎";
     } else if (count > 50) {
-        note.innerHTML = "<strong>You are the champ!! Relax now 😂</strong>";
+        note.innerHTML = "You are the champ!! <br/> Relax now 😂";
     } else {
-        note.innerHTML = "<strong>Oops, you have taken more than a second to react! Focus and keep going 😞</strong>";
+        note.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and keep going 😞";
     }
 
     if (r > 5) {
-        note.innerHTML = "<strong>Poor reaction speed! Take a break and start again 😥</strong>";
+        note.innerHTML = "Poor reaction speed! <br/> Take a break and start again 😥";
     }
-
 
     const number = Math.floor(Math.random() * 3);
     start(); // calculate the start time
@@ -102,7 +183,8 @@ function randomFigure() {
 }
 
 
-drawRectangle(); // initial figure
+drawCircle(); // initial figure
 start(); // initial start time
 // for every click on canvas, generate a random figure and reaction time
 canvas.onclick = randomFigure;
+canvas.touchstart = randomFigure;
