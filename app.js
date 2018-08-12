@@ -1,18 +1,18 @@
 // prepare playground for rendering canvas
-var canvas = document.getElementById('playground');
-var ctx = canvas.getContext('2d');
-var startTime;
-var note = document.getElementById('note');
-var count = 0;
+let canvas = document.getElementById('playground');
+let ctx = canvas.getContext('2d');
+let startTime;
+let note = document.getElementById('note');
+let count = 0;
 
 // update badge and badges element
-var badgeElement = document.getElementById('badge');
-var badgesElement = document.getElementById('badges');
-var streak = document.getElementById('streak');
-var highestStreak = document.getElementById('high');
-var badge = '';
-var badges = [];
-var streakCounts = [];
+let badgeElement = document.getElementById('badge');
+let badgesElement = document.getElementById('badges');
+let streak = document.getElementById('streak');
+let highestStreak = document.getElementById('high');
+let badge = '';
+let badges = [];
+let streakCounts = [];
 
 // runs when a certain count is reached based on switch logic
 function assignBadge(badgeName) {
@@ -26,8 +26,8 @@ function assignBadge(badgeName) {
 
 // detect browser window size and accordingly update canvas
 function getTransform() {
-    var x = window.innerWidth;
-    var y = window.innerHeight;
+    let x = window.innerWidth;
+    let y = window.innerHeight;
     if (x >= 300 && x <= 767) {
         x /= 2;
         y /= 3;
@@ -38,7 +38,7 @@ function getTransform() {
         x /= 1.75;
         y /= 3.5;
     }
-    var transform = `translate(${randomNumber(x)}px, ${randomNumber(y)}px)`;
+    let transform = `translate(${randomNumber(x)}px, ${randomNumber(y)}px)`;
     return transform;
 }
 
@@ -49,7 +49,7 @@ function start() {
 
 function randomColor() {
     // avoid light colors
-    var color = `rgb(${(Math.floor(200 * Math.random()) + 55)},
+    let color = `rgb(${(Math.floor(200 * Math.random()) + 55)},
                                     ${(Math.floor(200 * Math.random()) + 55)}, 
                                     ${(Math.floor(200 * Math.random()) + 55)})`;
     return color;
@@ -95,10 +95,10 @@ function randomFigure() {
     canvas.style.transform = getTransform();
 
     // calculate reaction time
-    var r = dateDifference(startTime);
+    let r = dateDifference(startTime);
 
     // update reaction element
-    var p = document.getElementById('reaction');
+    let p = document.getElementById('reaction');
     p.innerHTML = `${r}s`;
 
     // count number of reaction time less than a second
