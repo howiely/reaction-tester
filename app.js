@@ -180,7 +180,7 @@ function randomFigure() {
     }
 }
 
-
+canvas.style.transform = getTransform();
 drawCircle(); // initial figure
 start(); // initial start time
 note.innerHTML = "You will get some inspiring status quotes once you start the game";
