@@ -3,6 +3,8 @@ let canvas = document.getElementById('playground');
 let ctx = canvas.getContext('2d');
 let startTime;
 let note = document.getElementById('note');
+let endGameNote = document.getElementById('end');
+let button = document.getElementById('button');
 let count = 0;
 
 // update badge and badges element
@@ -132,7 +134,7 @@ function randomFigure() {
                 badgesElement.innerHTML = `Badges earned: <strong>${badges.join(' , ')}</strong>`;
             }
             break;
-        case 1:
+        case 10:
             assignBadge('Starter');
             break;
         case 25:
@@ -186,18 +188,20 @@ function randomFigure() {
 }
 
 function startGame() {
+    canvas.width = canvas.width;
     canvas.style.transform = getTransform();
     drawCircle(); // initial figure
     start(); // initial start time
     note.innerHTML = "You will get some inspiring status quotes once you start the game";
+    button.style.display = 'none';
+    endGameNote.innerHTML = '';
     // for every click on canvas, generate a random figure and reaction time
     canvas.addEventListener('click', randomFigure);
 }
 
 function endGame() {
-    let endGameNote = document.getElementById('end');
-    const text = document.createTextNode("You are the Flash!! <br/> Relax now, Game is over!!! 😂");
-    endGameNote.appendChild(text);
+    button.style.display = 'block';
+    endGameNote.innerHTML = "You are the Flash! Relax now, Game is over!!! 😂";
     canvas.removeEventListener('click', randomFigure);
 }
 
