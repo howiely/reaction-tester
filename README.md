@@ -12,16 +12,16 @@ Click the randomly generated canvas shapes *[**circles, rectangles, and squares*
 
 - Try to have reaction time less than a second to start the streak.
 
-- Streak becomes **0** if your reaction time is more than a second.
+- Game is over if your reaction time is more than a second OR If you achieved **Flash** badge.
 
 ## Badges
 - You will earn a **Starter** badge with a streak of 10.
 
 - You will earn a **Sharp** badge with a streak of 25.
 
-- You will earn a **Expert** badge with a streak of 50.
+- You will earn a **Champion** badge with a streak of 50.
 
-- You will earn a **Champion** badge with a streak of 100.
+- You will earn a **Expert** badge with a streak of 100.
 
 - You will earn a **Legend** badge with a streak of 250.
 
