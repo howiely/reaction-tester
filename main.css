@@ -63,6 +63,7 @@ body {
     font-size: 20px;
     text-align: center;
     padding: 10px;
+    display: none;
 }
 
 h2 {
@@ -129,6 +130,7 @@ strong,
     height: 400px;
     width: 100%;
     margin: 20px;
+    display: none;
 }
 
 #playground:hover {
@@ -146,6 +148,10 @@ strong,
 
 #note::after {
     content: '"';
+}
+
+.wrapper {
+    padding-top: 20px;
 }
 
 
@@ -238,7 +244,7 @@ strong,
         grid-gap: 20px;
         justify-content: space-around;
         max-width: 1280px;
-        margin: 10px auto;
+        margin: 20px auto;
     }
     .box p {
         margin: 20px 8%;
