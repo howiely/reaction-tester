@@ -5,7 +5,6 @@ let ctx = canvas.getContext('2d');
 let startTime;
 let subTitle = document.getElementsByClassName('subtitle')[0];
 let note = document.getElementById('note');
-let endGameNote = document.getElementById('end');
 let button = document.getElementById('button');
 let pointsWrapper = document.getElementsByClassName('points-wrapper')[0];
 let count = 0;
@@ -164,7 +163,7 @@ function randomFigure() {
     if (count >= 1 && count <= 25) {
         note.innerHTML = "Keep up the pace.<br/> Your reaction speed could be better! 😃";
     } else if (count > 25 && count <= 50) {
-        note.innerHTML = "Your reaction speed is Awesome! Concentrate and don't lose hope! 😉";
+        note.innerHTML = "Your reaction speed is Awesome! Concentrate and don't give up! 😉";
     } else if (count > 50 && count <= 100) {
         note.innerHTML = "Amazing reaction speed!! 😎";
     } else if (count > 100 && count <= 250) {
@@ -174,7 +173,7 @@ function randomFigure() {
     } else if (count > 500) {
         note.innerHTML = "You are the Flash! Relax now, Game is over!!! 😂";
     } else {
-        note.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and keep going! 😞";
+        note.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and play the game again! 😞";
     }
 
     if (r > 5) {
@@ -201,6 +200,7 @@ function startGame() {
     subTitle.style.display = 'block';
     button.style.display = 'none';
     pointsWrapper.style.display = 'grid';
+    note.innerHTML = "You will get some inspiring status quotes once you start the game!";
     // for every click on canvas, generate a random figure and reaction time
     canvas.addEventListener('click', randomFigure);
 }
@@ -210,7 +210,6 @@ function endGame() {
     subTitle.style.display = 'none';
     button.style.display = 'block';
     button.innerHTML = 'Restart Game';
-    endGameNote.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and play the game again. 😞";
     canvas.removeEventListener('click', randomFigure);
 }
 
