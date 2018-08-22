@@ -58,7 +58,8 @@ body {
     text-align: center;
 }
 
-.subtitle {
+.subtitle,
+#end {
     font-size: 20px;
     text-align: center;
     padding: 10px;
@@ -70,6 +71,7 @@ h2 {
 }
 
 strong,
+#end,
 #reaction,
 #streak,
 #note {

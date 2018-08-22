@@ -50,8 +50,8 @@ function start() {
 function randomColor() {
     // avoid light colors
     let color = `rgb(${(Math.floor(200 * Math.random()) + 55)},
-                                    ${(Math.floor(200 * Math.random()) + 55)}, 
-                                    ${(Math.floor(200 * Math.random()) + 55)})`;
+${(Math.floor(200 * Math.random()) + 55)}, 
+${(Math.floor(200 * Math.random()) + 55)})`;
     return color;
 }
 
@@ -132,7 +132,7 @@ function randomFigure() {
                 badgesElement.innerHTML = `Badges earned: <strong>${badges.join(' , ')}</strong>`;
             }
             break;
-        case 10:
+        case 1:
             assignBadge('Starter');
             break;
         case 25:
@@ -155,14 +155,17 @@ function randomFigure() {
     }
 
     // update note element to encourage the player and give status details of the game
-    if (count >= 1 && count < 10) {
+    if (count > 1 && count <= 25) {
         note.innerHTML = "Keep up the pace.<br/> Your reaction speed is good! 😃";
-    } else if (count >= 10 && count <= 25) {
-        note.innerHTML = "Your reaction speed is Awesome! 😉";
     } else if (count > 25 && count <= 50) {
+        note.innerHTML = "Your reaction speed is Awesome! 😉";
+    } else if (count > 50 && count <= 100) {
         note.innerHTML = "Amazing reaction speed!! 😎";
-    } else if (count > 50) {
-        note.innerHTML = "You are the champ!! <br/> Relax now 😂";
+    } else if (count > 100 && count <= 250) {
+        note.innerHTML = "You are the champ!! <br/> Keep going! 😂";
+    } else if (count > 250 && count < 500) {
+        note.innerHTML = "You are the Legend!! <br/> Close to earning a Flash badge 😉";
+
     } else {
         note.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and keep going 😞";
     }
@@ -192,7 +195,9 @@ function startGame() {
 }
 
 function endGame() {
-    note.innerHTML = "You are the Flash!! <br/> Relax now, Game is over!!! 😂";
+    let endGameNote = document.getElementById('end');
+    const text = document.createTextNode("You are the Flash!! <br/> Relax now, Game is over!!! 😂");
+    endGameNote.appendChild(text);
     canvas.removeEventListener('click', randomFigure);
 }
 
