@@ -1,7 +1,9 @@
 // prepare playground for rendering canvas
+let canvasWrapper = document.getElementsByClassName('canvas-wrapper')[0];
 let canvas = document.getElementById('playground');
 let ctx = canvas.getContext('2d');
 let startTime;
+let subTitle = document.getElementsByClassName('subtitle')[0];
 let note = document.getElementById('note');
 let endGameNote = document.getElementById('end');
 let button = document.getElementById('button');
@@ -190,19 +192,20 @@ function randomFigure() {
 }
 
 function startGame() {
+    canvasWrapper.style.display = 'block';
     canvas.width = canvas.width;
-    canvas.style.display = 'block';
     canvas.style.transform = getTransform();
     drawCircle(); // initial figure
     start(); // initial start time
+    subTitle.style.display = 'block';
     button.style.display = 'none';
-    endGameNote.innerHTML = '';
     // for every click on canvas, generate a random figure and reaction time
     canvas.addEventListener('click', randomFigure);
 }
 
 function endGame() {
-    canvas.style.display = 'none';
+    canvasWrapper.style.display = 'none';
+    subTitle.style.display = 'none';
     button.style.display = 'block';
     button.innerHTML = 'Restart Game';
     endGameNote.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and play the game again. 😞";
