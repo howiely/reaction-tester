@@ -149,6 +149,8 @@ function randomFigure() {
             break;
         case 500:
             assignBadge('Flash');
+            // end game
+            endGame();
             break;
     }
 
@@ -180,10 +182,18 @@ function randomFigure() {
     }
 }
 
-canvas.style.transform = getTransform();
-drawCircle(); // initial figure
-start(); // initial start time
-note.innerHTML = "You will get some inspiring status quotes once you start the game";
-// for every click on canvas, generate a random figure and reaction time
-canvas.onclick = randomFigure;
-canvas.touchstart = randomFigure;
+function startGame() {
+    canvas.style.transform = getTransform();
+    drawCircle(); // initial figure
+    start(); // initial start time
+    note.innerHTML = "You will get some inspiring status quotes once you start the game";
+    // for every click on canvas, generate a random figure and reaction time
+    canvas.addEventListener('click', randomFigure);
+}
+
+function endGame() {
+    note.innerHTML = "You are the Flash!! <br/> Relax now, Game is over!!! 😂";
+    canvas.removeEventListener('click', randomFigure);
+}
+
+window.addEventListener('load', startGame);
