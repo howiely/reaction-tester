@@ -7,6 +7,7 @@ let subTitle = document.getElementsByClassName('subtitle')[0];
 let note = document.getElementById('note');
 let endGameNote = document.getElementById('end');
 let button = document.getElementById('button');
+let pointsWrapper = document.getElementsByClassName('points-wrapper')[0];
 let count = 0;
 
 // update badge and badges element
@@ -199,6 +200,7 @@ function startGame() {
     start(); // initial start time
     subTitle.style.display = 'block';
     button.style.display = 'none';
+    pointsWrapper.style.display = 'grid';
     // for every click on canvas, generate a random figure and reaction time
     canvas.addEventListener('click', randomFigure);
 }
@@ -213,4 +215,4 @@ function endGame() {
 }
 
 // before the start of game
-note.innerHTML = "You will get some inspiring status quotes once you start the game!";
+pointsWrapper.style.display = 'none';
