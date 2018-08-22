@@ -3,6 +3,8 @@ let canvas = document.getElementById('playground');
 let ctx = canvas.getContext('2d');
 let startTime;
 let note = document.getElementById('note');
+let endGameNote = document.getElementById('end');
+let button = document.getElementById('button');
 let count = 0;
 
 // update badge and badges element
@@ -50,8 +52,8 @@ function start() {
 function randomColor() {
     // avoid light colors
     let color = `rgb(${(Math.floor(200 * Math.random()) + 55)},
-                                    ${(Math.floor(200 * Math.random()) + 55)}, 
-                                    ${(Math.floor(200 * Math.random()) + 55)})`;
+${(Math.floor(200 * Math.random()) + 55)}, 
+${(Math.floor(200 * Math.random()) + 55)})`;
     return color;
 }
 
@@ -155,14 +157,17 @@ function randomFigure() {
     }
 
     // update note element to encourage the player and give status details of the game
-    if (count >= 1 && count < 10) {
+    if (count > 1 && count <= 25) {
         note.innerHTML = "Keep up the pace.<br/> Your reaction speed is good! 😃";
-    } else if (count >= 10 && count <= 25) {
-        note.innerHTML = "Your reaction speed is Awesome! 😉";
     } else if (count > 25 && count <= 50) {
+        note.innerHTML = "Your reaction speed is Awesome! 😉";
+    } else if (count > 50 && count <= 100) {
         note.innerHTML = "Amazing reaction speed!! 😎";
-    } else if (count > 50) {
-        note.innerHTML = "You are the champ!! <br/> Relax now 😂";
+    } else if (count > 100 && count <= 250) {
+        note.innerHTML = "You are the champ!! <br/> Keep going! 😂";
+    } else if (count > 250 && count < 500) {
+        note.innerHTML = "You are the Legend!! <br/> Close to earning a Flash badge 😉";
+
     } else {
         note.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and keep going 😞";
     }
@@ -183,16 +188,20 @@ function randomFigure() {
 }
 
 function startGame() {
+    canvas.width = canvas.width;
     canvas.style.transform = getTransform();
     drawCircle(); // initial figure
     start(); // initial start time
     note.innerHTML = "You will get some inspiring status quotes once you start the game";
+    button.style.display = 'none';
+    endGameNote.innerHTML = '';
     // for every click on canvas, generate a random figure and reaction time
     canvas.addEventListener('click', randomFigure);
 }
 
 function endGame() {
-    note.innerHTML = "You are the Flash!! <br/> Relax now, Game is over!!! 😂";
+    button.style.display = 'block';
+    endGameNote.innerHTML = "You are the Flash! Relax now, Game is over!!! 😂";
     canvas.removeEventListener('click', randomFigure);
 }
 
