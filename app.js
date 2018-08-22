@@ -112,6 +112,7 @@ function randomFigure() {
         streakCounts.push(count);
         highestStreak.innerHTML = `Highest Streak: <strong>${Math.max(...streakCounts)}</strong>`;
         count = 0;
+        endGame();
     }
 
     // update streak element
@@ -158,22 +159,23 @@ function randomFigure() {
 
     // update note element to encourage the player and give status details of the game
     if (count > 1 && count <= 25) {
-        note.innerHTML = "Keep up the pace.<br/> Your reaction speed is good! 😃";
+        note.innerHTML = "Keep up the pace.<br/> Your reaction speed could be better! 😃";
     } else if (count > 25 && count <= 50) {
-        note.innerHTML = "Your reaction speed is Awesome! 😉";
+        note.innerHTML = "Your reaction speed is Awesome! Concentrate and don't lose hope! 😉";
     } else if (count > 50 && count <= 100) {
         note.innerHTML = "Amazing reaction speed!! 😎";
     } else if (count > 100 && count <= 250) {
         note.innerHTML = "You are the champ!! <br/> Keep going! 😂";
     } else if (count > 250 && count < 500) {
-        note.innerHTML = "You are the Legend!! <br/> Close to earning a Flash badge 😉";
-
+        note.innerHTML = "You are the Legend!! <br/> Very close to earning a Flash badge!! 😉";
+    } else if (count > 500) {
+        note.innerHTML = "You are the Flash! Relax now, Game is over!!! 😂";
     } else {
-        note.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and keep going 😞";
+        note.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and keep going! 😞";
     }
 
     if (r > 5) {
-        note.innerHTML = "Poor reaction speed! <br/> Take a break and start again 😥";
+        note.innerHTML = "Poor reaction speed! <br/> Take a break and start again 😥.";
     }
 
     const number = Math.floor(Math.random() * 3);
@@ -189,10 +191,11 @@ function randomFigure() {
 
 function startGame() {
     canvas.width = canvas.width;
+    canvas.style.display = 'block';
     canvas.style.transform = getTransform();
     drawCircle(); // initial figure
     start(); // initial start time
-    note.innerHTML = "You will get some inspiring status quotes once you start the game";
+    note.innerHTML = "You will get some inspiring status quotes once you start the game!";
     button.style.display = 'none';
     endGameNote.innerHTML = '';
     // for every click on canvas, generate a random figure and reaction time
@@ -200,8 +203,9 @@ function startGame() {
 }
 
 function endGame() {
+    canvas.style.display = 'none';
     button.style.display = 'block';
-    endGameNote.innerHTML = "You are the Flash! Relax now, Game is over!!! 😂";
+    endGameNote.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and play the game again. 😞";
     canvas.removeEventListener('click', randomFigure);
 }
 
