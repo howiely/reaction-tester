@@ -158,7 +158,7 @@ function randomFigure() {
     }
 
     // update note element to encourage the player and give status details of the game
-    if (count > 1 && count <= 25) {
+    if (count >= 1 && count <= 25) {
         note.innerHTML = "Keep up the pace.<br/> Your reaction speed could be better! 😃";
     } else if (count > 25 && count <= 50) {
         note.innerHTML = "Your reaction speed is Awesome! Concentrate and don't lose hope! 😉";
@@ -195,7 +195,6 @@ function startGame() {
     canvas.style.transform = getTransform();
     drawCircle(); // initial figure
     start(); // initial start time
-    note.innerHTML = "You will get some inspiring status quotes once you start the game!";
     button.style.display = 'none';
     endGameNote.innerHTML = '';
     // for every click on canvas, generate a random figure and reaction time
@@ -205,8 +204,10 @@ function startGame() {
 function endGame() {
     canvas.style.display = 'none';
     button.style.display = 'block';
+    button.innerHTML = 'Restart Game';
     endGameNote.innerHTML = "Oops, you have taken more than a second to react! <br/> Focus and play the game again. 😞";
     canvas.removeEventListener('click', randomFigure);
 }
 
-window.addEventListener('load', startGame);
+// before the start of game
+note.innerHTML = "You will get some inspiring status quotes once you start the game!";
