@@ -8,6 +8,7 @@ let note = document.getElementById('note');
 let button = document.getElementById('button');
 let pointsWrapper = document.getElementsByClassName('points-wrapper')[0];
 let count = 0;
+let delayNumber = 250;
 
 // update badge and badges element
 let badgeElement = document.getElementById('badge');
@@ -35,7 +36,7 @@ function getTransform() {
     if (x >= 300 && x <= 767) {
         x /= 2;
         y /= 3;
-    } else if (x >= 1920) {
+    } else if (x > 768 && x <= 1920) {
         x /= 1.25;
         y /= 4;
     } else {
@@ -53,9 +54,9 @@ function start() {
 
 function randomColor() {
     // avoid light colors
-    let color = `rgb(${(Math.floor(200 * Math.random()) + 55)},
-${(Math.floor(200 * Math.random()) + 55)}, 
-${(Math.floor(200 * Math.random()) + 55)})`;
+    let color = `rgb(${Math.floor(100 * Math.random())},
+${Math.floor(100 * Math.random())}, 
+${Math.floor(100 * Math.random())})`;
     return color;
 }
 
@@ -87,19 +88,47 @@ function dateDifference(actualTime) {
     // Calculate time between two times:
     const date = new Date();
     const endTime = date.getTime();
-    const d = (Math.abs(startTime - endTime)) / 1000;
+    let d = Math.abs(startTime - endTime) / 1000;
     return d;
 }
 
-function randomFigure() {
+function drawFigure() {
+    const number = Math.floor(Math.random() * 3);
+    start(); // calculate the start time
+    canvas.width = canvas.width;
+    if (number === 0) {
+        drawRectangle();
+    } else if (number === 1) {
+        drawCircle();
+    } else {
+        drawSquare();
+    }
+}
+
+// logic to set difficulty for various device widths
+function alterTime(t) {
+    let w = window.innerWidth;
+    if (w >= 300 && w <= 767) {
+        t += 0.45;
+    } else if (w >= 768 && w <= 1920) {
+        t += 0.25;
+    }
+
+    return t.toFixed(2);
+}
+
+function gameLogic() {
     // to clear canvas everytime before it is re-rendered
     canvas.width = canvas.width;
-
     // to translate canvas to random x and y co-ordinates
     canvas.style.transform = getTransform();
 
     // calculate reaction time
+    let delay = Math.floor(delayNumber * (Math.random() * 2)) + 100;
+    // this r is very important to alter reaction times
     let r = dateDifference(startTime);
+
+    r = alterTime(r);
 
     // update reaction element
     let p = document.getElementById('reaction');
@@ -108,17 +137,17 @@ function randomFigure() {
     // count number of reaction time less than a second
     if (r < 1) {
         highestStreak.style.display = 'none';
+        // update streak element
+        streak.innerHTML = count;
         count++;
     } else {
         highestStreak.style.display = 'block';
         streakCounts.push(count);
+        streak.innerHTML = streakCounts[streakCounts.length - 1];
         highestStreak.innerHTML = `Highest Streak: <strong>${Math.max(...streakCounts)}</strong>`;
         count = 0;
         endGame();
     }
-
-    // update streak element
-    streak.innerHTML = count;
 
     /* badges */
 
@@ -161,14 +190,19 @@ function randomFigure() {
 
     // update note element to encourage the player and give status details of the game
     if (count >= 1 && count <= 25) {
+        console.log(r);
         note.innerHTML = "Keep up the pace.<br/> Your reaction speed could be better! 😃";
     } else if (count > 25 && count <= 50) {
+        delayNumber = 500;
         note.innerHTML = "Your reaction speed is Awesome! Concentrate and don't give up! 😉";
     } else if (count > 50 && count <= 100) {
+        delayNumber = 750;
         note.innerHTML = "Amazing reaction speed!! 😎";
     } else if (count > 100 && count <= 250) {
+        delayNumber = 1000;
         note.innerHTML = "You are the champ!! <br/> Keep going! 😂";
     } else if (count > 250 && count < 500) {
+        delayNumber = 1250;
         note.innerHTML = "You are the Legend!! <br/> Very close to earning a Flash badge!! 😉";
     } else if (count > 500) {
         note.innerHTML = "You are the Flash! Relax now, Game is over!!! 😂";
@@ -180,18 +214,12 @@ function randomFigure() {
         note.innerHTML = "Poor reaction speed! <br/> Take a break and start again 😥.";
     }
 
-    const number = Math.floor(Math.random() * 3);
-    start(); // calculate the start time
-    if (number === 0) {
-        drawRectangle();
-    } else if (number === 1) {
-        drawCircle();
-    } else {
-        drawSquare();
-    }
+    // draw random figures on the canvas with delay
+    setTimeout(drawFigure, delay);
 }
 
 function startGame() {
+    console.clear();
     canvasWrapper.style.display = 'block';
     canvas.width = canvas.width;
     canvas.style.transform = getTransform();
@@ -202,7 +230,8 @@ function startGame() {
     pointsWrapper.style.display = 'grid';
     note.innerHTML = "You will get some inspiring status quotes once you start the game!";
     // for every click on canvas, generate a random figure and reaction time
-    canvas.addEventListener('click', randomFigure);
+    canvas.addEventListener('click', gameLogic);
+    canvas.addEventListener('touchstart', gameLogic);
 }
 
 function endGame() {
@@ -210,7 +239,8 @@ function endGame() {
     subTitle.style.display = 'none';
     button.style.display = 'block';
     button.innerHTML = 'Restart Game';
-    canvas.removeEventListener('click', randomFigure);
+    canvas.removeEventListener('click', gameLogic);
+    canvas.removeEventListener('touchstart', gameLogic);
 }
 
 // before the start of game
