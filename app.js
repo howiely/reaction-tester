@@ -94,8 +94,8 @@ function dateDifference(actualTime) {
 
 function drawFigure() {
     const number = Math.floor(Math.random() * 3);
-    start(); // calculate the start time
     canvas.width = canvas.width;
+    start(); // calculate the start time
     if (number === 0) {
         drawRectangle();
     } else if (number === 1) {
@@ -109,9 +109,9 @@ function drawFigure() {
 function alterTime(t) {
     let w = window.innerWidth;
     if (w >= 300 && w <= 767) {
-        t += 0.45;
+        t += 0.35;
     } else if (w >= 768 && w <= 1920) {
-        t += 0.25;
+        t += 0.15;
     }
 
     return t.toFixed(2);
@@ -190,7 +190,6 @@ function gameLogic() {
 
     // update note element to encourage the player and give status details of the game
     if (count >= 1 && count <= 25) {
-        console.log(r);
         note.innerHTML = "Keep up the pace.<br/> Your reaction speed could be better! 😃";
     } else if (count > 25 && count <= 50) {
         delayNumber = 500;
@@ -214,12 +213,16 @@ function gameLogic() {
         note.innerHTML = "Poor reaction speed! <br/> Take a break and start again 😥.";
     }
 
-    // draw random figures on the canvas with delay
-    setTimeout(drawFigure, delay);
+    // draw random figures on the canvas with delay on large devices
+    if (window.innerWidth > 575) {
+        setTimeout(drawFigure, delay);
+    } else {
+        drawFigure();
+    }
+
 }
 
 function startGame() {
-    console.clear();
     canvasWrapper.style.display = 'block';
     canvas.width = canvas.width;
     canvas.style.transform = getTransform();
