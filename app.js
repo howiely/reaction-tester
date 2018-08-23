@@ -201,7 +201,7 @@ function gameLogic() {
     } else if (count > 100 && count <= 250) {
         delayNumber = 1000;
         note.innerHTML = "You are the champ!! <br/> Keep going! 😂";
-    } else if (count > 250 && count < 500) {
+    } else if (count > 250 && count <= 500) {
         delayNumber = 1250;
         note.innerHTML = "You are the Legend!! <br/> Very close to earning a Flash badge!! 😉";
     } else if (count > 500) {
