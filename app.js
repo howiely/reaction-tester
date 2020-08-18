@@ -3,7 +3,6 @@ let canvasWrapper = document.getElementsByClassName('canvas-wrapper')[0]
 let canvas = document.getElementById('playground')
 let ctx = canvas.getContext('2d')
 let startTime
-let subTitle = document.getElementsByClassName('subtitle')[0]
 let note = document.getElementById('note')
 let button = document.getElementById('button')
 let pointsWrapper = document.getElementsByClassName('points-wrapper')[0]
@@ -240,7 +239,6 @@ function startGame() {
   canvas.style.transform = getTransform()
   drawCircle() // initial figure
   start() // initial start time
-  subTitle.style.display = 'block'
   button.style.display = 'none'
   pointsWrapper.style.display = 'grid'
   note.innerHTML =
@@ -252,7 +250,6 @@ function startGame() {
 
 function endGame() {
   canvasWrapper.style.display = 'none'
-  subTitle.style.display = 'none'
   button.style.display = 'block'
   button.innerHTML = 'Restart Game'
   canvas.removeEventListener('click', gameLogic)
