@@ -34,7 +34,7 @@ function getTransform() {
   let y = window.innerHeight
   if (x >= 300 && x <= 767) {
     x /= 2
-    y /= 3
+    y /= 2
   } else if (x > 768 && x <= 1920) {
     x /= 1.25
     y /= 4
@@ -142,10 +142,6 @@ function gameLogic() {
   } else {
     highestStreak.style.display = 'block'
     streakCounts.push(count)
-    streak.innerHTML = streakCounts[streakCounts.length - 1]
-    highestStreak.innerHTML = `Highest Streak: <strong>${Math.max(
-      ...streakCounts
-    )}</strong>`
     count = 0
     endGame()
   }
@@ -254,6 +250,11 @@ function endGame() {
   button.innerHTML = 'Restart Game'
   canvas.removeEventListener('click', gameLogic)
   canvas.removeEventListener('touchstart', gameLogic)
+  // update streak count and highest streak number
+  streak.innerHTML = streakCounts[streakCounts.length - 1]
+  highestStreak.innerHTML = `Highest Streak: <strong>${Math.max(
+    ...streakCounts
+  )}</strong>`
 }
 
 // before the start of game
