@@ -12,5 +12,7 @@ This fork was designed for use in my group's research study "The effects of stim
 # Access the Test
 [Reaction Test Link](https://howiely.github.io/reaction-tester)
 
+If you'd like to see Sai's original version, [click here!](https://iamsainikhil.github.io/reaction-tester)
+
 # Closing Remarks
 Although I have some basic experience with coding, I'm not proficient enough to create a project like this on my own yet. As a result, none of this would be possible without Sai Nikhil and his work to create this game, and I'd like to extend a huge thank you to him for doing so on behalf of myself and my groupmates.
