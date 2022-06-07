@@ -6,7 +6,7 @@ let startTime
 let note = document.getElementById('note')
 let button = document.getElementById('button')
 let pointsWrapper = document.getElementsByClassName('points-wrapper')[0]
-let count = 0
+let count = 1
 let delayNumber = 250
 
 // update badge and badges element
@@ -119,16 +119,20 @@ function gameLogic() {
   let p = document.getElementById('reaction')
   p.innerHTML = `${r}s`
 
+  // count number of reaction times
+  if (r > 0) {
+    highestStreak.style.display = 'none'
+    // update streak element
+    streak.innerHTML = count
+    count++
+  }
+
   // draw random figures on the canvas with delay on large devices
   if (window.innerWidth > 575) {
     setTimeout(drawFigure, delay)
   } else {
     drawFigure()
   }
-}
-
-function countShapes() {
-  return count
 }
 
 function startGame() {
