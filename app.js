@@ -6,12 +6,16 @@ let startTime
 let note = document.getElementById('note')
 let button = document.getElementById('button')
 let pointsWrapper = document.getElementsByClassName('points-wrapper')[0]
-let count = 0
+let count = 1
 let delayNumber = 250
 
 // update badge and badges element
+let badgeElement = document.getElementById('badge')
+let badgesElement = document.getElementById('badges')
 let streak = document.getElementById('streak')
 let highestStreak = document.getElementById('high')
+let badge = ''
+let badges = []
 let streakCounts = []
 
 // detect browser window size and accordingly update canvas
@@ -119,7 +123,7 @@ function gameLogic() {
   let p = document.getElementById('reaction')
   p.innerHTML = `${r}s`
 
-  // count number of reaction times
+  // count number of reaction time less than a second
   if (r >= 0) {
     highestStreak.style.display = 'none'
     // update streak element
@@ -127,30 +131,9 @@ function gameLogic() {
     count++
   }
 
+  /* badges */
+
   // update note element to encourage the player and give status details of the game
-  if (count >= 1 && count <= 25) {
-    note.innerHTML =
-      'Keep up the pace.<br/> Your reaction speed could be better! 😃'
-  } else if (count > 25 && count <= 50) {
-    delayNumber = 500
-    note.innerHTML =
-      "Your reaction speed is Awesome! Concentrate and don't give up! 😉"
-  } else if (count > 50 && count <= 100) {
-    delayNumber = 750
-    note.innerHTML = 'Amazing reaction speed!! 😎'
-  } else if (count > 100 && count <= 250) {
-    delayNumber = 1000
-    note.innerHTML = 'You are the champ!! <br/> Keep going! 😂'
-  } else if (count > 250 && count <= 500) {
-    delayNumber = 1250
-    note.innerHTML =
-      'You are the Legend!! <br/> Very close to earning a Flash badge!! 😉'
-  } else if (count > 500) {
-    note.innerHTML = 'You are the Flash! Relax now, Game is over!!! 😂'
-  } else {
-    note.innerHTML =
-      'Oops, you have taken more than a second to react! <br/> Focus and play the game again! 😞'
-  }
 
   // draw random figures on the canvas with delay on large devices
   if (window.innerWidth > 575) {
