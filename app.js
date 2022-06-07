@@ -133,9 +133,6 @@ if (r > 0) {
   streak.innerHTML = count
   count++
 } else {
-  highestStreak.style.display = 'block'
-  streakCounts.push(count)
-  count = 0
   endGame()
 }
 
