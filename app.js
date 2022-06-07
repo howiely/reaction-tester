@@ -120,7 +120,7 @@ function gameLogic() {
   p.innerHTML = `${r}s`
 
   // count number of reaction times
-  if (r > 0) {
+  if (r >= 0) {
     highestStreak.style.display = 'none'
     // update streak element
     streak.innerHTML = count
