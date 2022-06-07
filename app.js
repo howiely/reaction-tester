@@ -127,6 +127,13 @@ function gameLogic() {
   }
 }
 
+if (r > 0) {
+  highestStreak.style.display = 'none'
+  // update streak element
+  streak.innerHTML = count
+  count++
+}
+
 function startGame() {
   canvasWrapper.style.display = 'block'
   canvas.width = canvas.width
