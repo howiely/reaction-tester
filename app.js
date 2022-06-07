@@ -127,6 +127,9 @@ function gameLogic() {
   }
 }
 
+function countShapes() {
+  return count
+}
 
 function startGame() {
   canvasWrapper.style.display = 'block'
