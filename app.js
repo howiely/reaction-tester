@@ -127,11 +127,14 @@ function gameLogic() {
   }
 }
 
-if (r > 0) {
+if (r >= 0) {
   highestStreak.style.display = 'none'
   // update streak element
   streak.innerHTML = count
   count++
+} else {
+  count = 0
+  endGame()
 }
 
 function startGame() {
@@ -142,8 +145,6 @@ function startGame() {
   start() // initial start time
   button.style.display = 'none'
   pointsWrapper.style.display = 'grid'
-  note.innerHTML =
-    'You will get some inspiring status quotes once you start the game!'
   // for every click on canvas, generate a random figure and reaction time
   canvas.addEventListener('click', gameLogic)
   canvas.addEventListener('touchstart', gameLogic)
