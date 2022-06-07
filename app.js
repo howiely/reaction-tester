@@ -127,7 +127,7 @@ function gameLogic() {
   }
 }
 
-if (r >= 0) {
+if (r > 0) {
   highestStreak.style.display = 'none'
   // update streak element
   streak.innerHTML = count
