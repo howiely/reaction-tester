@@ -119,6 +119,15 @@ function gameLogic() {
   let p = document.getElementById('reaction')
   p.innerHTML = `${r}s`
 
+  if (r > 0) {
+    highestStreak.style.display = 'none'
+    // update streak element
+    streak.innerHTML = count
+    count++
+  } else {
+    endGame()
+  }
+
   // draw random figures on the canvas with delay on large devices
   if (window.innerWidth > 575) {
     setTimeout(drawFigure, delay)
@@ -127,14 +136,6 @@ function gameLogic() {
   }
 }
 
-if (r > 0) {
-  highestStreak.style.display = 'none'
-  // update streak element
-  streak.innerHTML = count
-  count++
-} else {
-  endGame()
-}
 
 function startGame() {
   canvasWrapper.style.display = 'block'
