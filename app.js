@@ -10,23 +10,9 @@ let count = 0
 let delayNumber = 250
 
 // update badge and badges element
-let badgeElement = document.getElementById('badge')
-let badgesElement = document.getElementById('badges')
 let streak = document.getElementById('streak')
 let highestStreak = document.getElementById('high')
-let badge = ''
-let badges = []
 let streakCounts = []
-
-// runs when a certain count is reached based on switch logic
-function assignBadge(badgeName) {
-  badge = badgeName
-  // check if badge already achieved
-  if (!badges.includes(badgeName)) {
-    badges.push(badge)
-  }
-  badgeElement.innerHTML = `Badge Earned: <strong>${badge}</strong>`
-}
 
 // detect browser window size and accordingly update canvas
 function getTransform() {
@@ -132,94 +118,6 @@ function gameLogic() {
   // update reaction element
   let p = document.getElementById('reaction')
   p.innerHTML = `${r}s`
-
-  // count number of reaction time less than a second
-  if (r < 1) {
-    highestStreak.style.display = 'none'
-    // update streak element
-    streak.innerHTML = count
-    count++
-  } else {
-    highestStreak.style.display = 'block'
-    streakCounts.push(count)
-    count = 0
-    endGame()
-  }
-
-  /* badges */
-
-  // badge statements
-  if (badges.length > 1) {
-    badgeElement.innerHTML = `Latest Badge Earned: <strong>${badge}</strong>`
-    badgesElement.innerHTML = `Badges earned: <strong>${badges.join(
-      ' , '
-    )}</strong>`
-  }
-
-  switch (count) {
-    case 0:
-      if (badges.length === 0) {
-        // do nothing
-      } else {
-        badgeElement.innerHTML = `Last Badge Earned: <strong>${
-          badges[badges.length - 1]
-        }</strong>`
-        badgesElement.innerHTML = `Badges earned: <strong>${badges.join(
-          ' , '
-        )}</strong>`
-      }
-      break
-    case 10:
-      assignBadge('Starter')
-      break
-    case 25:
-      assignBadge('Sharp')
-      break
-    case 50:
-      assignBadge('Champion')
-      break
-    case 100:
-      assignBadge('Expert')
-      break
-    case 250:
-      assignBadge('Legend')
-      break
-    case 500:
-      assignBadge('Flash')
-      // end game
-      endGame()
-      break
-  }
-
-  // update note element to encourage the player and give status details of the game
-  if (count >= 1 && count <= 25) {
-    note.innerHTML =
-      'Keep up the pace.<br/> Your reaction speed could be better! 😃'
-  } else if (count > 25 && count <= 50) {
-    delayNumber = 500
-    note.innerHTML =
-      "Your reaction speed is Awesome! Concentrate and don't give up! 😉"
-  } else if (count > 50 && count <= 100) {
-    delayNumber = 750
-    note.innerHTML = 'Amazing reaction speed!! 😎'
-  } else if (count > 100 && count <= 250) {
-    delayNumber = 1000
-    note.innerHTML = 'You are the champ!! <br/> Keep going! 😂'
-  } else if (count > 250 && count <= 500) {
-    delayNumber = 1250
-    note.innerHTML =
-      'You are the Legend!! <br/> Very close to earning a Flash badge!! 😉'
-  } else if (count > 500) {
-    note.innerHTML = 'You are the Flash! Relax now, Game is over!!! 😂'
-  } else {
-    note.innerHTML =
-      'Oops, you have taken more than a second to react! <br/> Focus and play the game again! 😞'
-  }
-
-  if (r > 5) {
-    note.innerHTML =
-      'Poor reaction speed! <br/> Take a break and start again 😥.'
-  }
 
   // draw random figures on the canvas with delay on large devices
   if (window.innerWidth > 575) {
